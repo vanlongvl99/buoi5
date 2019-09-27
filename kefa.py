@@ -9,15 +9,15 @@ for i in range(n-1):
     graph[first].append(second)
     graph[second].append(first)
 total = 0
-for i in range(2,n+1):
-    if len(graph[i]) == 1:
+for i in range(2, n+1):
+    if len(graph[i]) == 1: # các leaf vertices thì chỉ liên kết với đúng 1 đỉnh khác
         total += 1
         last = i
         cnt = 0
-        while last != -1:
-            if status[last - 1] == 1:
+        while last != -1:  # xét ngược từ vị trí i về root 
+            if status[last - 1] == 1:   # check trên những đỉnh về root có gặp cat hay k?
                 cnt += 1
-                if cnt > m:
+                if cnt > m:         # số mèo quá qui định
                     total = total - 1
                     break
                 last = path[last] 
